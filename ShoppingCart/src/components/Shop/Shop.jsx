@@ -1,9 +1,9 @@
 import Card from "../Card/Card"
 import { useContext, useEffect,useState } from "react"
-import { Outlet } from "react-router";
+import { Outlet,useOutletContext } from "react-router";
 import { CartContext } from "../context";
 export default function Shop (){
-    
+    const [cartNum,setCartNum]=useOutletContext();
     const cart = useContext(CartContext);
     const [product1,setProduct1]=useState();
     const [product2,setProduct2]=useState();
@@ -11,7 +11,7 @@ export default function Shop (){
     const [product4,setProduct4]=useState();
     const [product5,setProduct5]=useState();
     const [product6,setProduct6]=useState();
-   const [cartProducts,setCartProducts]=useState([]);
+   const [cartProducts,setCartProducts]=useState();
  useEffect(()=>{
     const dataFetch = async ()=>{
         const result =(
@@ -27,14 +27,18 @@ export default function Shop (){
     }
         dataFetch()
     },[])
-  
+    const increment = ()=> setCartNum((num)=> num+1);
     return (
          
 
       (cart == false) ? <div className="shop">
           
             {product1 && <Card price = {product1.price} title={product1.title} img={product1.image}
-             id={product1.id} onClick={()=>setCartProducts([product1])}  ></Card>}
+             id={product1.id} onClick={()=>{
+             setCartProducts([product1]),
+             increment()
+             
+             }}  ></Card>}
             <h1> Shop</h1>
           
       </div> : <Outlet context={[cartProducts,setCartProducts]}></Outlet>

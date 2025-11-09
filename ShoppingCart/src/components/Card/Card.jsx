@@ -1,16 +1,16 @@
 import { useState } from "react"
 import QuantityCntrl from "../QuantityCntrl/QuantityCntrl"
-
+import classes from './Card.module.css';
 export default function Card({price,title,img,id,onClick}){ // addToCart function needs to be passed  
  
 
     return (
-        <div className="card" id={id}>
+        <div className={classes.card} id={id}>
             <h3>{title}</h3>
-            <img src={img} alt="image of product 1" />
+            <img src={img} alt="image of product 1" className={classes.img}/>
             <p>{price}</p>
             <QuantityCntrl></QuantityCntrl>
-            <button onClick={onClick} >Add to cart</button>
+           {onClick && <button onClick={onClick} >Add to cart</button>}
         </div>
     )
 }
