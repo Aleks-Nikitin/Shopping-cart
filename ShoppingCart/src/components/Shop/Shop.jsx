@@ -4,6 +4,8 @@ import { Outlet,useOutletContext } from "react-router";
 import { CartContext } from "../context";
 export default function Shop (){
     const [cartNum,setCartNum]=useOutletContext();
+    const [itemsArr,setItemsArr]=useOutletContext();
+
     const cart = useContext(CartContext);
     const [product1,setProduct1]=useState();
     const [product2,setProduct2]=useState();
@@ -11,6 +13,7 @@ export default function Shop (){
     const [product4,setProduct4]=useState();
     const [product5,setProduct5]=useState();
     const [product6,setProduct6]=useState();
+
    const [cartProducts,setCartProducts]=useState();
  useEffect(()=>{
     const dataFetch = async ()=>{
@@ -27,7 +30,8 @@ export default function Shop (){
     }
         dataFetch()
     },[])
-    const increment = ()=> setCartNum((num)=> num+1);
+    const increment = ()=> setCartNum(1);
+    const updateItems =()=> setItemsArr([product1]);
     return (
          
 
@@ -35,13 +39,13 @@ export default function Shop (){
           
             {product1 && <Card price = {product1.price} title={product1.title} img={product1.image}
              id={product1.id} onClick={()=>{
-             setCartProducts([product1]),
-             increment()
+                increment(),
+             updateItems()
              
              }}  ></Card>}
             <h1> Shop</h1>
           
-      </div> : <Outlet context={[cartProducts,setCartProducts]}></Outlet>
+      </div> : <Outlet context={[itemsArr,setItemsArr]}></Outlet>
 
 
     )

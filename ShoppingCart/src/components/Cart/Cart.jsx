@@ -2,17 +2,17 @@
 import { useOutletContext } from "react-router"
 import Card from "../Card/Card";
 export default function Cart (){
-      const [cartProducts,setCartProducts]= useOutletContext();
-
+      const [itemsArr,setItemsArr]= useOutletContext();
+      console.log(itemsArr);
     return (
         <>
      
-        {cartProducts ?
-            
-            <Card price = {cartProducts[0].price} title={cartProducts[0].title} img={cartProducts[0].image}
-             id={cartProducts[0].id} ></Card>
+        {itemsArr[0]?
+            <Card price = {itemsArr[0].price} title={itemsArr[0].title} img={itemsArr[0].image}
+             id={itemsArr[0].id} ></Card>
              
         : <h1>Cart is empty add something</h1>}
         </>
+    
     )
 }

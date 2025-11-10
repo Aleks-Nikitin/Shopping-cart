@@ -5,7 +5,7 @@ import './root.css'
 import {  useState } from 'react';
 import { CartContext } from '../context.jsx';
 function App() {
-
+  const [itemsArr,setItemsArr]=useState([]);
  const [cartNum,setCartNum]= useState(0);
   const [cart,setCart] = useState(false);
   return (
@@ -15,7 +15,7 @@ function App() {
         </div>
       <div className={classes.content}>
       <CartContext value={cart}>
-        <Outlet context={[cartNum,setCartNum]}>
+        <Outlet context={[itemsArr,setItemsArr]}>
         </Outlet>
         </CartContext>
         </div>
