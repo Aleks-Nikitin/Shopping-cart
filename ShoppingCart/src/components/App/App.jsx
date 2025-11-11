@@ -4,7 +4,9 @@ import classes from './App.module.css'
 import './root.css'
 import {  useState } from 'react';
 import { CartContext } from '../context.jsx';
+import { QuantityContext} from '../quantityContxt.jsx';
 function App() {
+  const [quantity,setQuantity]=useState(1);
   const [itemsArr,setItemsArr]=useState([]);
  const [cartNum,setCartNum]= useState(0);
   const [cart,setCart] = useState(false);
@@ -14,10 +16,12 @@ function App() {
         <Nav onCartClick={()=>setCart(true)} onShopClick ={()=>setCart(false)} cartNum={cartNum}></Nav>
         </div>
       <div className={classes.content}>
+      <QuantityContext value={[quantity,setQuantity]}> 
       <CartContext value={cart}>
-        <Outlet context={[itemsArr,setItemsArr]}>
+        <Outlet context={[cartNum,setCartNum,itemsArr,setItemsArr]}>
         </Outlet>
         </CartContext>
+        </QuantityContext>
         </div>
     </div>
   )

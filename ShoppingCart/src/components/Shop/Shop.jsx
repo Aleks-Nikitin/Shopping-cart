@@ -3,8 +3,8 @@ import { useContext, useEffect,useState } from "react"
 import { Outlet,useOutletContext } from "react-router";
 import { CartContext } from "../context";
 export default function Shop (){
-    const [cartNum,setCartNum]=useOutletContext();
-    const [itemsArr,setItemsArr]=useOutletContext();
+    //const [cartNum,setCartNum]=useOutletContext();
+    const [cartNum, setCartNum,itemsArr,setItemsArr]=useOutletContext();
 
     const cart = useContext(CartContext);
     const [product1,setProduct1]=useState();
@@ -42,7 +42,7 @@ export default function Shop (){
                 increment(),
              updateItems()
              
-             }}  ></Card>}
+             }} ></Card>}
             <h1> Shop</h1>
           
       </div> : <Outlet context={[itemsArr,setItemsArr]}></Outlet>

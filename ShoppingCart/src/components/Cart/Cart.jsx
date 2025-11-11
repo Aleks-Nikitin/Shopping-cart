@@ -3,7 +3,6 @@ import { useOutletContext } from "react-router"
 import Card from "../Card/Card";
 export default function Cart (){
       const [itemsArr,setItemsArr]= useOutletContext();
-      console.log(itemsArr);
     return (
         <>
      
