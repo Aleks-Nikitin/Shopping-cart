@@ -4,7 +4,7 @@ import { Outlet,useOutletContext } from "react-router";
 import { CartContext } from "../context";
 export default function Shop (){
     //const [cartNum,setCartNum]=useOutletContext();
-    const [cartNum, setCartNum,itemsArr,setItemsArr]=useOutletContext();
+    const [itemsArr,setItemsArr]=useOutletContext();
 
     const cart = useContext(CartContext);
 
@@ -19,12 +19,11 @@ export default function Shop (){
             ])
         ).map((r)=> r.json());
 
-        
-        setProductsArr(await Promise.all(result));
+        const finalR = await Promise.all(result);
+        setProductsArr(finalR);
     }
         dataFetch()
     },[])
-    const increment = ()=> setCartNum(1);
     function updateIng(product){
         if(JSON.stringify(itemsArr).includes(JSON.stringify(product))){
             return 
@@ -40,9 +39,8 @@ export default function Shop (){
             {productsArr && productsArr.map((product)=>
             
             <Card price = {product.price} title={product.title} img={product.image}
-             key={product.id} onClick={()=>{
+             key={product.id} id={product.id} onClick={()=>{
                 console.log(product),
-                increment(),
              updateIng(product)
              
              }} ></Card>)}
