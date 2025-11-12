@@ -16,6 +16,9 @@ export default function Shop (){
                 fetch('https://fakestoreapi.com/products/1'),
                 fetch('https://fakestoreapi.com/products/2'),
                  fetch('https://fakestoreapi.com/products/3'),
+                 fetch('https://fakestoreapi.com/products/4'),
+                fetch('https://fakestoreapi.com/products/5'),
+                 fetch('https://fakestoreapi.com/products/6'),
             ])
         ).map((r)=> r.json());
 

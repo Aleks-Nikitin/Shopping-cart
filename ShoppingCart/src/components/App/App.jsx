@@ -4,6 +4,7 @@ import classes from './App.module.css'
 import './root.css'
 import {  useState } from 'react';
 import { CartContext } from '../context.jsx';
+import { DeleteContxt } from '../deleteContxt.jsx';
 import { QuantityContext} from '../quantityContxt.jsx';
 function App() {
   const [quantity,setQuantity]=useState(1);
@@ -23,12 +24,15 @@ function App() {
         <Nav onCartClick={()=>setCart(true)} onShopClick ={()=>setCart(false)} cartNum={itemsArr.length}></Nav>
         </div>
       <div className={classes.content}>
+<DeleteContxt value={[itemsArr,setItemsArr]}>
       <QuantityContext value={[quantity,setQuantity,quantity1,setQuantity1,quantity2,setQuantity2,quantity3,setQuantity3,quantity4,setQuantity4,quantity5,setQuantity5]}> 
       <CartContext value={cart}>
+        
         <Outlet context={[itemsArr,setItemsArr]}>
         </Outlet>
         </CartContext>
         </QuantityContext>
+        </DeleteContxt>
         </div>
     </div>
   )
