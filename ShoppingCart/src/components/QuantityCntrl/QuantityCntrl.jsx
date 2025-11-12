@@ -1,6 +1,6 @@
  import { useContext, useState } from "react";
 import { QuantityContext } from "../quantityContxt";
-
+import classes from "./QuantityCntrl.module.css";
 export default function QuantityCntrl({id}){
     const [quantity,setQuantity,quantity1,setQuantity1,quantity2,setQuantity2,quantity3,setQuantity3,quantity4,setQuantity4,quantity5,setQuantity5]= useContext(QuantityContext)
 
@@ -48,9 +48,9 @@ export default function QuantityCntrl({id}){
    }
 
     return (
-        <>
-        <button onClick={handleIncrease}>+</button>
-        <input type="text" placeholder="1" min="1"
+        <div className={classes.block}>
+        <button className={classes.btn} onClick={handleIncrease}>+</button>
+        <input type="text" placeholder="1" min="1" className={classes.input}
         value={ id==1? quantity : id==2 ? quantity1 : id ==3 ? quantity2: id ==4 ? quantity3
             : id==5 ? quantity4 : id==6 ? quantity5 :1
         }
@@ -59,7 +59,7 @@ export default function QuantityCntrl({id}){
             : id==5 ? setQuantity4(e.target.value) : id==6 ? setQuantity5(e.target.value) :null
             }
         />
-        <button onClick={handleDecrease}>-</button>
-        </>
+        <button className={classes.btn} onClick={handleDecrease}>-</button>
+        </div>
     )
 }

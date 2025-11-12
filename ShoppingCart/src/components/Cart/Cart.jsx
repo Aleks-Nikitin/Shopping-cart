@@ -1,13 +1,16 @@
 
 import { useOutletContext } from "react-router"
 import Card from "../Card/Card";
+import classes from "./Cart.module.css";
 export default function Cart (){
       const [itemsArr,setItemsArr]= useOutletContext();
 
     return (
         <>
-        <button onClick={()=> setItemsArr([])}>Clear the cart</button>
-        {itemsArr[0] ?
+        <button className={classes.btn} onClick={()=> setItemsArr([])}>Clear the cart</button>
+        {!itemsArr[0] &&<h1>Cart is empty add something</h1> }
+        <div className={classes.container}>
+        {itemsArr[0] &&
         
         itemsArr.map((product)=>
         {
@@ -20,7 +23,8 @@ export default function Cart (){
           
              
     
-        : <h1>Cart is empty add something</h1>}
+        }
+        </div>
         </>
     
     )

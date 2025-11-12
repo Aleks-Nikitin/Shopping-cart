@@ -1,0 +1,7 @@
+.shop{
+    composes: container from "../Cart/Cart.module.css";
+}
+.shopTitle{
+    text-align: center;
+    font-size: 40px;
+}

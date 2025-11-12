@@ -2,6 +2,7 @@ import Card from "../Card/Card"
 import { useContext, useEffect,useState } from "react"
 import { Outlet,useOutletContext } from "react-router";
 import { CartContext } from "../context";
+import classes from "./Shop.module.css";
 export default function Shop (){
     //const [cartNum,setCartNum]=useOutletContext();
     const [itemsArr,setItemsArr]=useOutletContext();
@@ -37,7 +38,10 @@ export default function Shop (){
     return (
          
 
-      (cart == false) ? <div className="shop">
+      (cart == false) ? 
+      <>
+      <h1 className={classes.shopTitle}> Shop</h1>
+      <div className={classes.shop}>
           
             {productsArr && productsArr.map((product)=>
             
@@ -47,9 +51,10 @@ export default function Shop (){
              updateIng(product)
              
              }} ></Card>)}
-            <h1> Shop</h1>
+            
           
-      </div> : <Outlet context={[itemsArr,setItemsArr]}></Outlet>
+      </div>
+      </> : <Outlet context={[itemsArr,setItemsArr]}></Outlet>
 
 
     )

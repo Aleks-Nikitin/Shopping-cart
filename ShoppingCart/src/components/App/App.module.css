@@ -10,6 +10,7 @@
 }
 .content{
   grid-row: 2/3;
+  padding: 30px;
   background-color: rgb(246, 247, 235);
 }
 .bob{
