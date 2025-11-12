@@ -1,0 +1,38 @@
+.img {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
+.card {
+  padding: 10px;
+  display: grid;
+  justify-items: center;
+  background-color: #4c80a0;
+}
+.price {
+  color: #2b0101;
+  font-size: x-large;
+  font-weight: bold;
+}
+.title {
+  color: aliceblue;
+}
+.btn {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  appearance: none;
+  padding: 5px 15px 5px 15px;
+  border: 1px solid black;
+  background-color: rgb(0, 31, 75);
+  color: #ffffff;
+  border-radius: 14px;
+  font-weight: 800;
+  transition:
+    transform,
+    box-shadow 1s;
+}
+.btn:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+  transform: scale(1.1);
+}

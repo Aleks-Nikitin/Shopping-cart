@@ -1,0 +1,13 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 10px;
+}
+.btn {
+  composes: btn from "../Card/Card.module.css";
+  font-size: x-large;
+  border-radius: 20px;
+  align-items: center;
+  gap: 10px;
+}
